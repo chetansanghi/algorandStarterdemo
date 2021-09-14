@@ -36,7 +36,7 @@ public class AlgorandController {
 
     String[] headers = {"X-API-Key"};
     //String[] values = {"OVKYBexVj38K5jEMKTwnk45Cg4hVbzeD1RL8zG60"};
-    String[] values = {"DTKOHdOBDs8OGekEmjH7R3tRkePSIhxC2ESNUXFf"};
+    String[] values = {"<Replace with secret from repository called API_KEY or uncomment the above to use default>"};
 
     /**
      * A method to retrieve account details as specified in the properties file

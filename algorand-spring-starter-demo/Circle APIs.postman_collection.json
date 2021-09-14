@@ -1,0 +1,243 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Circle APIs",
+		"_postman_id": "c1961635-ef16-ed2f-f452-3cc7503755e4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add wallet",
+			"request": {
+				"url": "http://localhost:8080/wallets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idempotencyKey\": \"ba943ff1-ca16-49b2-ba55-1057e70ca5c5\",\n\t\"description\" : \"My first circle wallet\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Bank Account Wire Payout",
+			"request": {
+				"url": "http://localhost:8080/payout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"destination\": {\n          \"type\": \"wire\",\n          \"id\": \"ca8a8b29-a4fc-4695-881e-572139d6aa7f\"\n     },\n     \"amount\": {\n          \"amount\": \"3.00\",\n          \"currency\": \"USD\"\n     },\n     \"idempotencyKey\": \"ba943ff1-ca16-49b2-ba55-1057e70ca5c5\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get linked bank account by id",
+			"request": {
+				"url": "http://localhost:8080/bankAccount/ca8a8b29-a4fc-4695-881e-572139d6aa7f",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:8080/bankAccount/ca8a8b29-a4fc-4695-881e-572139d6aa7f"
+			},
+			"response": []
+		},
+		{
+			"name": "Wire Transfer",
+			"request": {
+				"url": "http://localhost:8080/wireTransfer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"amount\": {\n          \"amount\": \"3.14\",\n          \"currency\": \"USD\"\n     },\n     \"trackingRef\": \"CIR262DQPU\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create linked bank account",
+			"request": {
+				"url": "http://localhost:8080/bankAccount",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"billingDetails\": {\n\t\t\"name\":\"Satoshi Nakamoto\",\n\t\t\"city\":\"Boston\",\n\t\t\"country\":\"US\",\n\t\t\"line1\":\"100 Money Street\",\n\t\t\"line2\":\"Suite 1\",\n\t\t\"district\":\"MA\",\n\t\t\"postalCode\":\"01234\"\n\t},\n\t\"bankAddress\":{\n\t\t\"bankName\":\"SAN FRANCISCO\",\n\t\t\"country\":\"US\",\n\t\t\"city\":\"SAN FRANCISCO\",\n\t\t\"line1\":\"100 Money Street\",\n\t\t\"line2\":\"Suite 1\",\n\t\t\"district\":\"CA\"\n\t},\n\t\"idempotencyKey\":\"ba943ff1-ca16-49b2-ba55-1057e70ca5c7\",\n\t\"accountNumber\":\"12340010\",\n\t\"routingNumber\":\"121000248\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get wallet by ID",
+			"request": {
+				"url": "http://localhost:8080/wallets/1000174393",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "http://localhost:8080/wallets/1000174393"
+			},
+			"response": []
+		},
+		{
+			"name": "Add address to a wallet",
+			"request": {
+				"url": "http://localhost:8080/wallets/1000174393/addresses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idempotencyKey\": \"ba943ff1-ca16-49b2-ba55-1057e70ca5c3\",\n\t\"currency\" : \"USD\",\n\t\"chain\" : \"ALGO\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add card",
+			"request": {
+				"url": "http://localhost:8080/cards",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"cardDetails\": {\n          \"number\": \"4007400000000007\",\n          \"cvv\": \"000\"\n     },\n     \"billingDetails\": {\n          \"name\": \"Satoshi Nakamoto\",\n          \"city\": \"Boston\",\n          \"country\": \"US\",\n          \"line1\": \"100 Money Street\",\n          \"line2\": \"Suite 1\",\n          \"district\": \"MA\",\n          \"postalCode\": \"01234\"\n     },\n     \"metadata\": {\n          \"email\": \"satoshi@circle.com\",\n          \"phoneNumber\": \"+14155555555\",\n          \"sessionId\": \"DE6FA86F60BB47B379307F851E238617\",\n          \"ipAddress\": \"244.28.239.130\"\n     },\n     \"idempotencyKey\": \"ba943ff1-ca16-49b2-ba55-1057e70ca5g6\",\n     \"keyId\": \"key1\",\n     \"expMonth\": \"01\",\n     \"expYear\": 2020\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Sandbox add card",
+			"request": {
+				"url": "https://api-sandbox.circle.com/v1/cards",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer QVBJX0tFWTo2M2UxYjI2YmQxMDA5MjE3ZjFlMTVkZjk4OTk1OTA0NTo0ODQ4MDM2M2Y3YjQ3ZDE5MmQ5MjVkZjQ5YjgyOWY5OQ",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"encryptedData\" : \"hQEMA7KWdnGMMIXAAQgArSS6b3RsFtp/TkKo6nHEQuPrp6DX+Fyu/ZzOaD1ytV8YaAGo0VbVQSY6s8SsZoAuVCgMKG8F5+HqnSOyluD3dFXLvH0Jiu47+zj8PKzT15ap753g7TgDkVO6antt2XtlIQNWuQU6GsV2KGn2TInDbXWK+Z212qlb15FklVSWCmf9vEKbXUKGqkd0gIsp8JSDSpuYArk3jrAz1D6Jh4XRPz3Hbp1/GlYDBApuP9LgCMVlWVRLF55pOyzZdjzpFQCyYnqr3J8fmUMfcwZoHh8ebffNzHiADllrqjKAbfG3lkV3pmZsShpYDlP5FN8bWAchQo2TuEbLjLtGMzmaOIK6iskzxkHjFLJnqXFvivP37Oxgclarq7nkJ5I4E+bWiQEIkWcRXHg28utiwjlMLztOW3KAxfMp\",\n     \"billingDetails\": {\n          \"name\": \"Satoshi Nakamoto\",\n          \"city\": \"Boston\",\n          \"country\": \"US\",\n          \"line1\": \"100 Money Street\",\n          \"line2\": \"Suite 1\",\n          \"district\": \"MA\",\n          \"postalCode\": \"01234\"\n     },\n     \"metadata\": {\n          \"email\": \"satoshi@abc.com\",\n          \"phoneNumber\": \"4155555555\",\n          \"sessionId\": \"DE6FA86F60BB47B379307F851E238617\",\n          \"ipAddress\": \"244.28.239.130\"\n     },\n     \"idempotencyKey\": \"ba943ff1-ca16-49b2-ba55-1057e70ca5y7\",\n     \"keyId\": \"key1\",\n     \"expMonth\": 1,\n     \"expYear\": 2025\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "wallet to wallet transfer",
+			"request": {
+				"url": "http://localhost:8080/walletTransfer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idempotencyKey\" : \"123e4567-e89b-12d3-a456-426614174092\",\n\t\"source\" : {\n\t\t\"type\" : \"wallet\",\n\t\t\"id\" : \"1000174393\"\n\t},\n\t\"destination\" : {\n\t\t\"type\" : \"wallet\",\n\t\t\"id\" : \"1000174358\"\n\t},\n\t\"amount\" : {\n\t\t\"amount\" : \"2.50\",\n\t\t\"currency\" : \"USD\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "wallet to wallet transfer with payout",
+			"request": {
+				"url": "http://localhost:8080/walletTransferWithPayout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idempotencyKey\" : \"123e4567-e89b-12d3-a456-426614174051\",\n\t\"source\" : {\n\t\t\"type\" : \"wallet\",\n\t\t\"id\" : \"1000174393\"\n\t},\n\t\"destination\" : {\n\t\t\"type\" : \"wallet\",\n\t\t\"id\" : \"1000174358\"\n\t},\n\t\"amount\" : {\n\t\t\"amount\" : \"1.70\",\n\t\t\"currency\" : \"USD\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Card payment",
+			"request": {
+				"url": "http://localhost:8080/cardPayment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"idempotencyKey\" : \"123e4567-e89b-12d3-a456-426614174124\",\n\t\"keyId\" : \"\",\n\t\"source\" : {\n\t\t\"type\" : \"card\",\n\t\t\"id\" : \"cardId\"\n\t},\n\t\"amount\" : {\n\t\t\"amount\" : \"2.00\",\n\t\t\"currency\" : \"USD\"\n\t},\n\t\"metadata\": {\n          \"email\": \"satoshi@circle.com\",\n          \"phoneNumber\": \"+14155555555\",\n          \"sessionId\": \"DE6FA86F60BB47B379307F851E238617\",\n          \"ipAddress\": \"244.28.239.130\"\n    },\n    \"cvv\" : \"123\",\n    \"encryptedData\" : \"dsdsdsAD\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

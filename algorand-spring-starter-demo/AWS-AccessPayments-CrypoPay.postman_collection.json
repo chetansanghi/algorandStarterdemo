@@ -36,7 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "Card Payment",
+			"name": "Stable Card Payment",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -56,6 +56,50 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":1000,\n      \"currency\":\"USD\"\n    },\n    \"narrative\":\"Customer paying using USDC Crypto Card\",\n    \"posEntryMode\":\"MANUAL\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"card\",\n      \"primaryAccountNumber\":\"400740xxxxxx0007\"\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://access-payment-1889612106.us-east-2.elb.amazonaws.com/cardAccessPayment",
+					"protocol": "http",
+					"host": [
+						"access-payment-1889612106",
+						"us-east-2",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"cardAccessPayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crypto Card Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer QVBJX0tFWTo4MGNlOGVlOGVkNDhlMTIxNDNjNjc4ZjlkMzZjYzUyNTphYzYxMmUxNTNjNGZlZmQxMzFjODdkODYzYjJlNjc1NQ==",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":1000,\n      \"currency\":\"BTC\"\n    },\n    \"narrative\":\"Customer paying using BTC Crypto Card\",\n    \"posEntryMode\":\"MANUAL\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"card\",\n      \"primaryAccountNumber\":\"510242xxxxxx0006\"\n    }\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"

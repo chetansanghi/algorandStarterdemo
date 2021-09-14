@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,6 +198,13 @@ public class CircleWalletController {
 						System.out.println("idempotencyKey = " + idempotencyKey);
 						System.out.println("amount = " + amountInt);
 						System.out.println("currency = " + currency);
+						
+						
+						int authCodeInt = new Random().nextInt(999999);
+						
+						System.out.println("authCodeInt : " + String.format("%06d", authCodeInt));
+
+						
 						paymentAmount = new Amount(String.valueOf(amountInt), currency);
 						
 
@@ -217,10 +225,12 @@ public class CircleWalletController {
 						Destination wireDestination = new Destination("wire", "ca8a8b29-a4fc-4695-881e-572139d6aa7f");
 						Payout payout = new Payout(UUID.randomUUID().toString(), wireDestination, walletTransfer.getAmount());
 						String payoutResponse = payoutService.payout(payout);
+
 						transactionResponse.setTransactionOutcome(TransactionOutcome.SUCCESS);
 						Issuer issuerResponse = new Issuer();
-						String authCode = UUID.randomUUID().toString();
-						issuerResponse.setAuthorisationCode(authCode.substring(0, 5));
+						//String authCode = UUID.randomUUID().toString();
+						//issuerResponse.setAuthorisationCode(authCode.substring(0, 5));
+						issuerResponse.setAuthorisationCode(String.format("%06d", authCodeInt).trim());
 						Acquirer acquirer = new Acquirer();
 						acquirer.setAcquirerResponseCode("00");
 						transactionResponse.setIssuer(issuerResponse);

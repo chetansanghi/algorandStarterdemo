@@ -12,10 +12,6 @@ public class Payment {
 	private String description;
 	private String cvv;
 	
-	public Payment() {
-		
-	}
-	
 	public Payment(String idempotencyKey, String keyId, String encryptedData, Metadata metadata, Amount amount,
 			String verification, TransferEntity source, String description, String cvv) {
 		super();

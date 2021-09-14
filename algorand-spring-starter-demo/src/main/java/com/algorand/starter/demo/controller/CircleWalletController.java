@@ -160,12 +160,10 @@ public class CircleWalletController {
 		if( paymentRequest != null && paymentRequest.length() > 0) {
 
 			AuthorisationRequest authRequest = cryptoPaymentMapper.mapPaymentRequest(paymentRequest);
-			//cryptoPaymentMapper.unmapRequest(authRequest);
 			if ( authRequest != null ) {
 				Instruction instruction = authRequest.getInstruction();
 				if ( instruction != null ) {
 					PaymentInstrument paymentInstrument = instruction.getPaymentInstrument();
-					//cryptoPaymentMapper.unmapRequest(paymentInstrument);
 					String tokenId = "1000175190";
 					if ( paymentInstrument != null ) {
 						System.out.println("Payment Instrument Class Name: " + paymentInstrument.getClass().getName());
@@ -200,16 +198,17 @@ public class CircleWalletController {
 							System.out.println("authCodeInt : " + String.format("%06d", authCodeInt));
 
 							Integer amount = value.getAmount();
+							System.out.println("Request Amount = " + amount);							
 							double amountDouble;
 							TransferEntity source;
 							if (currency.equalsIgnoreCase("ETH")) {
-								amountDouble = (amount.intValue())/1000000000;
+								System.out.println("amount.intValue() = " + amount);								
+								amountDouble = (amount.intValue())/1000000000.0;
 								source = new TransferEntity(tokenId, "wallet");
 							} else {
 								amountDouble = (amount.intValue())/100;
 								source = new TransferEntity("1000174393", "wallet");
 							}
-							System.out.println("amount = " + amountDouble);
 							paymentAmount = new Amount(String.valueOf(amountDouble), currency);
 
 							TransferEntity destination = new TransferEntity("1000174358", "wallet");
@@ -226,21 +225,17 @@ public class CircleWalletController {
 							ResponseEntity<String> exchange = restTemplate.exchange(new URI("https://api-sandbox.circle.com/v1/transfers"), HttpMethod.POST, entity, String.class);
 							System.out.println("Wallet transfer response "+exchange.getBody());
 							Destination wireDestination = new Destination("wire", "ca8a8b29-a4fc-4695-881e-572139d6aa7f");
-							
 							Amount payoutAmount = walletTransfer.getAmount();
 							
 							if (currency.equalsIgnoreCase("ETH")) {
-								amountDouble = amountDouble * 3359.93;
+								amountDouble = (amountDouble * 3359.93);
 								payoutAmount = new Amount(String.valueOf(amountDouble), "USD");
 							}
-							
+							System.out.println("payoutAmount = " + amountDouble);
 							Payout payout = new Payout(UUID.randomUUID().toString(), wireDestination, payoutAmount);
 							String payoutResponse = payoutService.payout(payout);
-
 							transactionResponse.setTransactionOutcome(TransactionOutcome.SUCCESS);
 							Issuer issuerResponse = new Issuer();
-							//String authCode = UUID.randomUUID().toString();
-							//issuerResponse.setAuthorisationCode(authCode.substring(0, 5));
 							issuerResponse.setAuthorisationCode(String.format("%06d", authCodeInt).trim());
 							Acquirer acquirer = new Acquirer();
 							acquirer.setAcquirerResponseCode("00");

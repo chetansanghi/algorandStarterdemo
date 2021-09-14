@@ -3,9 +3,7 @@ package com.algorand.starter.demo.controller;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.algorand.starter.demo.model.BankAccount;
 import com.algorand.starter.demo.model.Payout;
@@ -84,7 +81,7 @@ public class CircleController {
 	}
 	
 	@PostMapping("payout")
-	public String wireTransfer(@RequestBody Payout payout) throws RestClientException, URISyntaxException {
+	public String payout(@RequestBody Payout payout) throws RestClientException, URISyntaxException {
 		HttpHeaders headers = new HttpHeaders();
 		 
         headers.set("Authorization", "Bearer QVBJX0tFWTo2M2UxYjI2YmQxMDA5MjE3ZjFlMTVkZjk4OTk1OTA0NTo0ODQ4MDM2M2Y3YjQ3ZDE5MmQ5MjVkZjQ5YjgyOWY5OQ");
@@ -96,9 +93,8 @@ public class CircleController {
         HttpEntity<Payout> entity = new HttpEntity <> (payout, headers);
 		
 		ResponseEntity<String> exchange = restTemplate.exchange(new URI("https://api-sandbox.circle.com/v1/businessAccount/payouts"), HttpMethod.POST, entity, String.class);
-		
+		System.out.println("Payout response "+exchange);
 		return "Bank Transfer done successfully "+exchange;
-		
 	}
 	
 }

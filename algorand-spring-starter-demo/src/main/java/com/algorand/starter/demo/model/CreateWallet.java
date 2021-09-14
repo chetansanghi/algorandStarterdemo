@@ -1,11 +1,11 @@
 package com.algorand.starter.demo.model;
 
-public class Wallet {
+public class CreateWallet {
 
 	private String idempotencyKey;
 	private String description;
 	
-	public Wallet(String idempotencyKey, String description) {
+	public CreateWallet(String idempotencyKey, String description) {
 		super();
 		this.idempotencyKey = idempotencyKey;
 		this.description = description;

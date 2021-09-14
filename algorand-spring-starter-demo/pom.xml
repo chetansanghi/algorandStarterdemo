@@ -27,12 +27,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>com.algorand</groupId>
-			<artifactId>algosdk</artifactId>
-			<version>1.5.1</version>
-		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpg-jdk15on -->
 		<dependency>

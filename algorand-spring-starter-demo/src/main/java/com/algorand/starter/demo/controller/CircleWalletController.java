@@ -206,14 +206,13 @@ public class CircleWalletController {
 								amountDouble = (amount.intValue())/1000000000.0;
 								source = new TransferEntity(tokenId, "wallet");
 							} else {
-								amountDouble = (amount.intValue())/100;
+								amountDouble = (amount.intValue())/100.0;
 								source = new TransferEntity("1000174393", "wallet");
 							}
 							paymentAmount = new Amount(String.valueOf(amountDouble), currency);
 
 							TransferEntity destination = new TransferEntity("1000174358", "wallet");
 							WalletTransfer walletTransfer = new WalletTransfer(idempotencyKey, source, destination, paymentAmount);
-
 							HttpHeaders headers = new HttpHeaders();
 					        headers.set("Authorization", "Bearer QVBJX0tFWTo2M2UxYjI2YmQxMDA5MjE3ZjFlMTVkZjk4OTk1OTA0NTo0ODQ4MDM2M2Y3YjQ3ZDE5MmQ5MjVkZjQ5YjgyOWY5OQ");
 					        headers.setContentType(MediaType.APPLICATION_JSON);
@@ -225,6 +224,7 @@ public class CircleWalletController {
 							ResponseEntity<String> exchange = restTemplate.exchange(new URI("https://api-sandbox.circle.com/v1/transfers"), HttpMethod.POST, entity, String.class);
 							System.out.println("Wallet transfer response "+exchange.getBody());
 							Destination wireDestination = new Destination("wire", "ca8a8b29-a4fc-4695-881e-572139d6aa7f");
+							
 							Amount payoutAmount = walletTransfer.getAmount();
 							
 							if (currency.equalsIgnoreCase("ETH")) {
@@ -232,7 +232,6 @@ public class CircleWalletController {
 								payoutAmount = new Amount(String.valueOf(amountDouble), "USD");
 							}
 							System.out.println("payoutAmount = " + amountDouble);
-					
 							Payout payout = new Payout(UUID.randomUUID().toString(), wireDestination, payoutAmount);
 							String payoutResponse = payoutService.payout(payout);
 							

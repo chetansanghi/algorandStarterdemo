@@ -55,7 +55,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":1000,\n      \"currency\":\"USD\"\n    },\n    \"narrative\":\"Customer paying using USDC Crypto Card\",\n    \"posEntryMode\":\"MANUAL\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"card\",\n      \"primaryAccountNumber\":\"400740xxxxxx0007\"\n    }\n  }\n}",
+					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":100,\n      \"currency\":\"USD\"\n    },\n    \"narrative\":\"Customer paying using USDC Crypto Card\",\n    \"posEntryMode\":\"MANUAL\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"card\",\n      \"primaryAccountNumber\":\"400740xxxxxx0007\"\n    }\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +143,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":1000,\n      \"currency\":\"ETH\"\n    },\n    \"narrative\":\"Customer paying using Bitcoin Crypto Wallet\",\n    \"posEntryMode\":\"BARCODE\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"cryptowallet\",\n      \"tokenId\":\"1234567890ABCDEFGHIJ\",\n      \"provider\":\"cryptopay\",\n      \"blockchain\":\"bitcoin\"\n    }\n  }\n}",
+					"raw": "{\n  \"transactionReference\":\"2535\",\n  \"transactionDateTime\":1608628360012,\n  \"paypoint\":{\n    \"paypointId\":\"022980012\",\n    \"countryCode\":\"US\",\n    \"deviceSerialNumber\":\"14011990\",\n    \"terminalType\":\"ATTENDED\",\n    \"capabilities\":\"E0F8C8\"\n  },\n  \"instruction\":{\n    \"transactionType\":\"SALE\",\n    \"value\":{\n      \"amount\":300000,\n      \"currency\":\"ETH\"\n    },\n    \"narrative\":\"Customer paying using Bitcoin Crypto Wallet\",\n    \"posEntryMode\":\"BARCODE\",\n    \"reasonOnlineCode\":\"06\",\n    \"paymentInstrument\":{\n      \"type\":\"cryptowallet\",\n      \"tokenId\":\"1000175190\",\n      \"provider\":\"cryptopay\",\n      \"blockchain\":\"ethereum\"\n    }\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
